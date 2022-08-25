@@ -7,8 +7,7 @@
     <% end %>
     <div><%= link_to book_comment.user.name, (book_comment.user) %></div>
   </div>
-    <% end %>
-  </div>
+<% end %>
 <div>
   <%= form_with model: [book, book_comment], local: false do |f| %>
     <%= f.text_area :comment, rows: '5', cols: '80%' %>
