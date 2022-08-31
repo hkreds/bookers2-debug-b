@@ -12,9 +12,6 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @book = Book.new
-    @user = current_user
-    @following_users = @user.following_user
-    @follower_users = @user.follower_user
   end
 
   def edit
