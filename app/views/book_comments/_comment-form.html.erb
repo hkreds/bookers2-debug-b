@@ -1,3 +1,4 @@
+<div  class="comment-form_<%= book.id %>">
 <table class='table'>
   <tr>
     <td>
@@ -16,7 +17,7 @@
     <td>コメント数：<%= book.book_comments.count %></td>
   </tr>
 </table>
-<div class="comment-form_<%= book.id %>">
+<div>
   <% book.book_comments.each do |book_comment| %>
     <div>
       <%= image_tag book_comment.user.get_profile_image, size:"100x67" %>
@@ -33,4 +34,5 @@
       <%= f.submit "送信" %>
     <% end %>
   </div>
+</div>
 </div>
