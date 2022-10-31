@@ -1,0 +1,7 @@
+<div class="my-3">
+  <%= form_with url: user_search_date_path(@user), local: false, method: :get do |f| %>
+    <%= f.date_field :create %>
+    <%= f.submit "検索", class: "btn btn-sm btn-primary" %>
+  <% end %>
+</div>
+<div class="search_date_table"></div>

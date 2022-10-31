@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @following_users = @user.following_user
     @follower_users = @user.follower_user
   end
-
+  
   def index
     @users = User.all
     @book = Book.new
@@ -39,6 +39,12 @@ class UsersController < ApplicationController
     @users = @user.follower_user.all
     @following_users = @user.following_user
     @follower_users = @user.follower_user
+  end
+  
+  def search_date
+    @user = User.find(params[:user_id])
+    @books = @user.books.where(created_at: params[:create].to_date.all_day)
+    render "search_date"
   end
 
   private
