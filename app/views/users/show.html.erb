@@ -9,6 +9,43 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
+      <h2>投稿数の前日比・前週比</h2>
+      <table class="table table-bordered">
+        <thead>
+          <th>今日の投稿数</th>
+          <th>前日の投稿数</th>
+          <th>前日比</th>
+        </thead>
+        <tbody>
+          <td><%= today_books = @books.where(created_at: Time.zone.now.all_day).count %></td>
+          <td><%= yesterday_books = @books.where(created_at: 1.day.ago.all_day).count %></td>
+          <td>
+            <% if yesterday_books != 0 %>
+              <%= today_books % yesterday_books * 100 %>
+            <% else %>
+              計算不能
+            <% end %>
+          </td>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+          <th>今週の投稿数</th>
+          <th>前週の投稿数</th>
+          <th>前週比</th>
+        </thead>
+        <tbody>
+          <td><%= this_week_books = @books.where(created_at: 7.day.ago.beginning_of_day..Time.zone.now.end_of_day).count %></td>
+          <td><%= last_week_books = @books.where(created_at: 2.week.ago.beginning_of_day..1.week.ago.end_of_day).count %></td>
+          <td>
+            <% if last_week_books != 0 %>
+              <%= this_week_books % last_week_books * 100 %>
+            <% else %>
+              計算不能
+            <% end %>
+          </td>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
