@@ -10,7 +10,26 @@
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
       <h2>7日間分の投稿数</h2>
-      
+      <table class="table table-bordered">
+        <thead>
+          <th>6日前</th>
+          <th>5日前</th>
+          <th>4日前</th>
+          <th>3日前</th>
+          <th>2日前</th>
+          <th>1日前</th>
+          <th>今日</th>
+        </thead>
+        <tbody>
+          <td><%= @books.where(created_at: 6.day.ago.all_day).count %></td>
+          <td><%= @books.where(created_at: 5.day.ago.all_day).count %></td>
+          <td><%= @books.where(created_at: 4.day.ago.all_day).count %></td>
+          <td><%= @books.where(created_at: 3.day.ago.all_day).count %></td>
+          <td><%= @books.where(created_at: 2.day.ago.all_day).count %></td>
+          <td><%= @books.where(created_at: 1.day.ago.all_day).count %></td>
+          <td><%= @books.where(created_at: Time.zone.now.all_day).count %></td>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
